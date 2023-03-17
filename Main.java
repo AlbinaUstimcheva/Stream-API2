@@ -32,8 +32,9 @@ public class Main {
         // и до 65 лет для мужчин)
         Collection<Person> ableBodied = persons.stream().
                 filter(person -> person.getEducation() == Education.HIGHER)
-                .filter(person -> person.getSex() == Sex.MAN ? person.getAge() >= 18 && person.getAge() <= 65
-                        : person.getAge() >= 18 && person.getAge() <= 60)
+                .filter(person->person.getAge()>=18)
+                .filter(person -> person.getSex() == Sex.MAN ? person.getAge() <= 65
+                        : person.getAge() <= 60)
                 .sorted(Comparator.comparing(Person::getFamily)).collect(Collectors.toList());
     }
 }
